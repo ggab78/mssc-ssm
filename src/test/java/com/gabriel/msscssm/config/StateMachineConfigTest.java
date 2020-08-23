@@ -2,6 +2,7 @@ package com.gabriel.msscssm.config;
 
 import com.gabriel.msscssm.domain.PaymentEvent;
 import com.gabriel.msscssm.domain.PaymentState;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,6 +20,8 @@ class StateMachineConfigTest {
     @Autowired
     StateMachineFactory<PaymentState, PaymentEvent> factory;
 
+
+
     @Test
     void testNewStateMachine(){
         StateMachine<PaymentState, PaymentEvent> sm = factory.getStateMachine(UUID.randomUUID());
@@ -34,7 +37,6 @@ class StateMachineConfigTest {
         sm.sendEvent(PaymentEvent.PRE_AUTH_APPROVED);
 
         System.out.println(sm.getState().toString());
-
 
     }
 
