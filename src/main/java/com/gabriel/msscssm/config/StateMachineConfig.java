@@ -64,7 +64,7 @@ public class StateMachineConfig extends StateMachineConfigurerAdapter<PaymentSta
         return context -> {
             System.out.println("PreAuth was Called !!!");
 
-            if (new Random().nextInt(10) < 8) {
+            if (new Random().nextInt(10) < 6) {
                 System.out.println("Approved");
                 context.getStateMachine().sendEvent(MessageBuilder.withPayload(PaymentEvent.PRE_AUTH_APPROVED)
                         .setHeader(PaymentServiceImpl.PAYMENT_ID_HEADER, context.getMessageHeader(PaymentServiceImpl.PAYMENT_ID_HEADER))
