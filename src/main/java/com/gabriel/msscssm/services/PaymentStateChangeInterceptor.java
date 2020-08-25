@@ -32,7 +32,6 @@ public class PaymentStateChangeInterceptor extends StateMachineInterceptorAdapte
         System.out.println("STATE :"+state.getId());
         System.out.println("STATE MACHINE :"+stateMachine.getState());
 
-
         Optional.ofNullable(message).ifPresent(msg->{
             Optional.ofNullable(Long.class.cast(msg.getHeaders().getOrDefault(PaymentServiceImpl.PAYMENT_ID_HEADER,-1L)))
                     .ifPresent(id->{

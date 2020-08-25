@@ -44,9 +44,15 @@ class PaymentServiceImplTest {
 
         System.out.println("SM : "+sm.getState().getId());
 
-        Payment preAuthPayment = paymentRepository.getOne(savedPayment.getId());
+        Payment payment = paymentRepository.getOne(savedPayment.getId());
 
-        System.out.println("STATE : "+preAuthPayment.getState());
+        System.out.println("STATE PRE AUTH : "+payment.getState());
+
+        sm = paymentService.auth(payment.getId());
+
+        payment = paymentRepository.getOne(savedPayment.getId());
+
+        System.out.println("STATE AUT: "+payment.getState());
 
     }
 }
